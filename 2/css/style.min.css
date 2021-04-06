@@ -1334,8 +1334,7 @@ img {
   transition-timing-function: ease-in, ease-out;
   transition-duration: 10ms, 0.3s; }
   .active .form__field {
-    flex: none;
-    flex-grow: 1;
+    flex: 1;
     opacity: 1; }
   @media (min-width: 2000px) {
     .form__field {
@@ -1600,8 +1599,7 @@ img {
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
-  transition-duration: 300ms;
-  transition-timing-function: ease-out;
+  transition: all 0.3s ease-out;
   opacity: 0;
   transform: translateY(24px); }
   .active .intro__message {
@@ -2970,14 +2968,14 @@ img {
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
-  transition: 0.2s ease;
   transform: translateX(30px);
   opacity: 0; }
   .swiper-slide-active .slider__item-text,
   .swiper-slide-next .slider__item-text {
-    transition-timing-function: ease-out;
-    transition-duration: 0.3s;
-    transition-delay: 0.3s;
+    transition: transform, opacity;
+    transition-timing-function: ease-out, ease-out;
+    transition-duration: 0.3s, 0.3s;
+    transition-delay: 0.3s, 0.3s;
     opacity: 1;
     transform: translateX(0); }
   .swiper-slide-next .slider__item-text {
