@@ -50,8 +50,7 @@
   transition-duration: 10ms, 0.3s;
 
   .active & {
-    flex: none;
-    flex-grow: 1;
+    flex: 1;
     opacity: 1;
   }
 
