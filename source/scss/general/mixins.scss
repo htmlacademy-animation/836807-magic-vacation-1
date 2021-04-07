@@ -58,3 +58,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@mixin main-transition($translate-x: 0, $translate-y: 0) {
+  opacity: 0;
+  transform: translate($translate-x, $translate-y);
+  transition-property: opacity, transform;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.31, 1, 0.91, 0.99);
+
+  .ready & {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
