@@ -977,6 +977,17 @@ img {
   clip: rect(0 0 0 0);
   overflow: hidden; }
 
+@keyframes zoomIn {
+  0% {
+    width: 0;
+    height: 0; }
+  80% {
+    width: 120%;
+    height: 120%; }
+  100% {
+    width: 100%;
+    height: 100%; } }
+
 .animation-screen {
   position: fixed;
   display: flex;
@@ -1599,7 +1610,7 @@ img {
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out .6s;
   opacity: 0;
   transform: translateY(24px); }
   .active .intro__message {
@@ -1898,7 +1909,7 @@ img {
       right: 0;
       transition-property: background-color, width;
       transition-timing-function: ease, ease;
-      transition-duration: 0.2s, 0.3s; }
+      transition-duration: 0.2s, 0.4s; }
       @media (max-width: 1024px) and (orientation: portrait) {
         .page-header__menu a::after {
           left: 0;
@@ -3203,6 +3214,8 @@ img {
     border: 2px solid #ffffff;
     z-index: -1;
     transition: all 300ms ease-in-out; }
+    .ready .social-block__toggler::before {
+      animation: zoomIn 0.5s; }
   .social-block__toggler svg {
     position: absolute;
     top: 50%;
