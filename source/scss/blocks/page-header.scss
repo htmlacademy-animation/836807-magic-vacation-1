@@ -28,6 +28,7 @@
 
 .page-header__logo {
   @include hover;
+  @include main-transition(-24px);
   position: relative;
   flex: none;
   top: -0.5rem;
@@ -171,6 +172,7 @@
 }
 
 .page-header__menu {
+  @include main-transition;
   font-family: $font-alt;
   text-transform: uppercase;
   font-weight: 400;
@@ -252,8 +254,8 @@
       background-color: $c-light;
       right: 0;
       transition-property: background-color, width;
-      transition-timing-function: ease;
-      transition-duration: 0.2s, 0.3s;
+      transition-timing-function: ease, ease;
+      transition-duration: 0.2s, 0.4s;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
@@ -268,14 +270,14 @@
       }
     }
 
-    &.active {
+    .ready &.active {
       &::after {
         width: 100%;
         right: auto;
         left: 0;
       }
     }
-
+  
     &:hover,
     &:focus {
       color: $c-purple;

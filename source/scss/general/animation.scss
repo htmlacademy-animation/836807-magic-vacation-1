@@ -1,0 +1,16 @@
+@keyframes zoomIn {
+  0% {
+    width: 0;
+    height: 0;
+  }
+
+  80% {
+    width: 120%;
+    height: 120%;
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}

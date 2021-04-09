@@ -40,7 +40,11 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
-    transition: all 200ms ease-in-out;
+    transition: all 300ms ease-in-out;
+
+    .ready & {
+      animation: zoomIn 0.5s;
+    }
   }
 
   svg {
