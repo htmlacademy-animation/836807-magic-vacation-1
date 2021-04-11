@@ -1,5 +1,10 @@
 import throttle from 'lodash/throttle';
 
+const screens = {
+  STORY: 1,
+  PRIZES: 2,
+};
+
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 2000;
@@ -8,6 +13,7 @@ export default class FullPageScroll {
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
 
     this.activeScreen = 0;
+    this.previouslyScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
   }
@@ -29,6 +35,7 @@ export default class FullPageScroll {
 
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
+    this.previouslyScreen = this.activeScreen;
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
     this.changePageDisplay();
   }
@@ -40,12 +47,34 @@ export default class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
+    if (this.previouslyScreen === screens.STORY && this.activeScreen === screens.PRIZES) {
+      const previouslyScreen = this.screenElements[this.previouslyScreen];
+      const screenBackground = previouslyScreen.querySelector(`.screen__background`);
+
+      previouslyScreen.classList.add(`has-hiding`);
+
+      screenBackground.addEventListener(`transitionend`, () => {
+        previouslyScreen.classList.remove(`has-hiding`);
+
+        this.changeScreens();
+      });
+      return;
+    }
+
+    this.changeScreens();
+  }
+
+
+  changeScreens() {
+    const activeScreen = this.screenElements[this.activeScreen];
+
     this.screenElements.forEach((screen) => {
       screen.classList.add(`screen--hidden`);
       screen.classList.remove(`active`);
     });
-    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
-    setTimeout(() => this.screenElements[this.activeScreen].classList.add(`active`), 100);
+
+    activeScreen.classList.remove(`screen--hidden`);
+    setTimeout(() => activeScreen.classList.add(`active`), 0);
   }
 
   changeActiveMenuItem() {
@@ -69,6 +98,8 @@ export default class FullPageScroll {
   }
 
   reCalculateActiveScreenPosition(delta) {
+    this.previouslyScreen = this.activeScreen;
+    
     if (delta > 0) {
       this.activeScreen = Math.min(this.screenElements.length - 1, ++this.activeScreen);
     } else {
