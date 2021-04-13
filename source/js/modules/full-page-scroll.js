@@ -47,25 +47,23 @@ export default class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
-    if (this.previouslyScreen === screens.STORY && this.activeScreen === screens.PRIZES) {
-      const previouslyScreen = this.screenElements[this.previouslyScreen];
-      const screenBackground = previouslyScreen.querySelector(`.screen__background`);
+    const screenBackground = document.querySelector(`.prizes__curtain`);
+    const activeClass = `visible`;
+    const isNeedShowCurtain = this.previouslyScreen === screens.STORY && this.activeScreen === screens.PRIZES;
 
-      previouslyScreen.classList.add(`has-hiding`);
+    if (isNeedShowCurtain) {
+      screenBackground.classList.add(activeClass);
+      screenBackground.addEventListener(`transitionend`, () => this.changeActiveScreens());
 
-      screenBackground.addEventListener(`transitionend`, () => {
-        previouslyScreen.classList.remove(`has-hiding`);
-
-        this.changeScreens();
-      });
       return;
     }
 
-    this.changeScreens();
+    screenBackground.classList.remove(activeClass);
+    this.changeActiveScreens();
   }
 
 
-  changeScreens() {
+  changeActiveScreens() {
     const activeScreen = this.screenElements[this.activeScreen];
 
     this.screenElements.forEach((screen) => {
