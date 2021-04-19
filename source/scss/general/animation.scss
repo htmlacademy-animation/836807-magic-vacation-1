@@ -14,3 +14,34 @@
     height: 100%;
   }
 }
+
+@keyframes rulesTextAppearance {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rulesNumberAppearance {
+  to {
+    color: rgba($color: #ffffff, $alpha: 1);
+    transform: scale(1);
+  }
+}
+
+@keyframes rulesLinkAppearance {
+  to {
+    color: rgba($color: $c-dark, $alpha: 1);
+  }
+}
+
+@keyframes rulesLinkBtnAppearance {
+  30% {
+    opacity: .9;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
