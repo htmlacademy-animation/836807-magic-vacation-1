@@ -49,9 +49,13 @@
   transition-timing-function: ease-in, ease-out;
   transition-duration: 10ms, 0.3s;
 
-  .active & {
+  .active &, .screen--show & {
     flex: 1;
     opacity: 1;
+  }
+
+  .screen--show & {
+    transition-delay: 200ms;
   }
 
   @media (min-width: $stop-scaling) {
@@ -86,7 +90,23 @@
 
 .form__button {
   flex: none;
-  width: 18rem;
+  color: transparent;
+  transition: color 200ms;
+  transition-delay: 400ms;
+  
+  &::before {
+    opacity: 0;
+    transition: opacity 400ms;
+    transition-delay: 200ms;
+  }
+
+  .screen--show &::before, .active &::before {
+    opacity: 1;
+  }
+
+  .screen--show &, .active & {
+    color: #5f458c;
+  }
 
   @media (orientation: portrait) {
     position: relative;

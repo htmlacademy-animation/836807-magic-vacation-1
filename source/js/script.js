@@ -9,6 +9,7 @@ import result from './modules/result.js';
 import form from './modules/form.js';
 import social from './modules/social.js';
 import FullPageScroll from './modules/full-page-scroll';
+import SymbolAnimation from './modules/symbol-animation';
 
 // init modules
 mobileHeight();
@@ -22,4 +23,18 @@ form();
 social();
 
 const fullPageScroll = new FullPageScroll();
+const introTitleAnimation = new SymbolAnimation(`.intro__title`, 600, `transform`);
+const introDateAnimation = new SymbolAnimation(`.intro__date`, 600, `transform`);
+const historyTitleAnimation = new SymbolAnimation(`.slider__item-title`, 500, `transform`);
+const prizesTitleAnimation = new SymbolAnimation(`.prizes__title`, 500, `transform`);
+const rulesTitleAnimation = new SymbolAnimation(`.rules__title`, 500, `transform`);
+const gameTitleAnimation = new SymbolAnimation(`.game__title`, 500, `transform`);
+
+introTitleAnimation.runAnimation();
+introDateAnimation.runAnimation();
+historyTitleAnimation.runAnimation();
+prizesTitleAnimation.runAnimation();
+rulesTitleAnimation.runAnimation();
+gameTitleAnimation.runAnimation();
+
 fullPageScroll.init();
