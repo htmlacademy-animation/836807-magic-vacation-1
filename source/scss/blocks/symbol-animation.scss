@@ -1,0 +1,18 @@
+.text__word {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  margin: 0 5px;
+  overflow: hidden;
+
+  & > span {
+    transform: translate3d(0, 1.5em, 0);
+    line-height: 1.5;
+  }
+}
+
+
+.symbol-animated__text .text__word > span {
+  .active & {
+    transform: translate3d(0, 0, 0);
+  }
+}
